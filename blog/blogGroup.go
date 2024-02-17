@@ -11,9 +11,6 @@ import (
 	"time"
 )
 
-//const addr = "192.168.5.135:6379"
-//const password = ""
-
 // 创建redis客户端，连接数据库2，存储映射信息
 func newClient2() *redis.Client {
 	client := redis.NewClient(&redis.Options{
