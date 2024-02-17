@@ -15,21 +15,13 @@ spec:
     spec: 
       containers:
       - name: reactjob
-        image: uiblog:v1
-        command: ["npm", "start"]
+        image: front:v1
         ports: 
         - name: uiport
           containerPort: 3000
           protocol: TCP
       - name: gojob
-        image: goblog:v1
-        command: 
-          - bash
-          - "-c"
-          - | 
-            set -ex
-            cd /go/src/blog
-            go run main.go
+        image: bachend:v1
 ---
 apiVersion: v1
 kind: Service
