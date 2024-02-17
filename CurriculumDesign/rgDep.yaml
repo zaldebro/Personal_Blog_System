@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: rgdep
+  namespace: default
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: rg
+  template: 
+    metadata: 
+      labels: 
+        app: rg
+    spec: 
+      containers:
+      - name: reactjob
+        image: uiblog:v1
+        command: ["npm", "start"]
+        ports: 
+        - name: uiport
+          containerPort: 3000
+          protocol: TCP
+      - name: gojob
+        image: goblog:v1
+        command: 
+          - bash
+          - "-c"
+          - | 
+            set -ex
+            cd /go/src/blog
+            go run main.go
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svcblog
+  namespace: default
+spec:
+  selector:
+    app: rg
+  type: NodePort
+  ports:
+  - nodePort: 30081
+    protocol: TCP
+    port: 3000
+    targetPort: uiport

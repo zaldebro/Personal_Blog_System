@@ -1,0 +1,21 @@
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s; /* 添加过渡效果 */
+}
+
+.avatar-container:hover {
+    transform: scale(1.1); /* 鼠标悬停时放大 */
+}
+
+.avatar-container::before {
+    content: '';
+    position: absolute;
+    top: -4px; /* 调整位置，确保覆盖在头像边框上 */
+    left: -4px; /* 调整位置，确保覆盖在头像边框上 */
+    width: calc(100% + 8px); /* 调整大小，覆盖整个头像边框 */
+    height: calc(100% + 8px); /* 调整大小，覆盖整个头像边框 */
+    border-radius: 50%; /* 圆形边框 */
+    background-image: linear-gradient(45deg, rgb(35, 210, 49) 0%, rgba(218, 55, 55, 0.5) 50%, rgb(180, 20, 217) 100%); /* 渐变效果 */
+    z-index: -1; /* 确保位于头像下方 */
+}
