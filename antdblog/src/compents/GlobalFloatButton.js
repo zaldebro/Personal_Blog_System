@@ -170,7 +170,7 @@ export default function GlobalFloatButton(){
                <p>点击此链接前往CMDB项目源码：</p>
                <a href="https://github.com/zaldebro/CMDB" target="_blank">前往CMDB项目</a>
                <p>点击此链接前往本站项目源码：</p>
-               <a href="#" target="_blank">前往本站项目</a>
+               <a href="https://github.com/zaldebro/Personal_blog_system" target="_blank">前往本站项目</a>
            </Drawer>
 
        </>
