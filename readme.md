@@ -53,8 +53,8 @@ RUN cd /root/ && \
 WORKDIR /root/blog/
 
 CMD ["/usr/local/go/bin/go", "run", "blog"]
-[root@localhost BackEnd]# docker build -t bachend:v1 -f backFile .
-[root@localhost BackEnd]# docker run -it -d --name blog_backEnd --link blog_redis:blog_redis --link blog_mongo:blog_mongo bachend:v1
+[root@localhost BackEnd]# docker build -t backend:v1 -f backFile .
+[root@localhost BackEnd]# docker run -it -d --name blog_backEnd --link blog_redis:blog_redis --link blog_mongo:blog_mongo backend:v1
 ```
 
 
