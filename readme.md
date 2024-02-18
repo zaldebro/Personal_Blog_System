@@ -99,11 +99,8 @@ tmpfs                   tmpfs     182M     0  182M   0% /run/user/0
 原因，docker镜像没有深度清理！
 
 ```shell
-[root@localhost overlay2]# docker system prune
-
 # 删除没有被使用的镜像， /var/lib/docker/overlay2/相关文件还在。。。。
 [root@localhost ~]# docker image prune -a 
-# 删除所有镜像
+# 删除没有被使用的镜像
 [root@localhost overlay2]# docker system prune -a --force 
 ```
-
