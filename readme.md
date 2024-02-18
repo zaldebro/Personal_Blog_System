@@ -23,7 +23,7 @@ systemctl enable --now docker
 ```shell
 [root@localhost blogJob]# docker run --restart always --name blog_redis -it -d -v /root/blogJob/redisData/:/data redis
 
-[root@localhost blogJob]# docker run --restart always  --name blog_mongo -v /root/blogJob/mongoData/:/data/db -d mongo
+[root@localhost blogJob]# docker run --restart always --name blog_mongo -v /root/blogJob/mongoData/:/data/db -d mongo:4.4
 ```
 
 
