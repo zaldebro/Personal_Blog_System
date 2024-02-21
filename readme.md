@@ -58,7 +58,6 @@ CMD ["/usr/local/go/bin/go", "run", "blog"]
 ```
 
 
-
 ### 前端React部署
 
 ```shell
@@ -79,6 +78,18 @@ CMD ["npm", "start"]
 [root@localhost Front]# docker run -it -d --name blog_front --link blog_backEnd:blog_backEnd -p 80:3000 front:v1
 ```
 
+
+## 部署监控相关
+
+```shell
+# 运行Linux_exporter容器
+[root@localhost Front]# docker run -d --restart=always --name linux_exporter prom/node-exporter
+# 部署Prometheus容器
+[root@localhost Front]# docker run  -d --name prometheus --restart=always -p 9090:9090 --link Linux_exporter:Linux_exporter --link blog_backEnd:blog_backEnd -v /root/blogJob/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+# 部署grafana容器
+[root@localhost Front]# docker run -itd --restart=always -p 3000:3000 --name grafana --link prometheus:prometheus grafana/grafana
+
+```
 
 
 ## 汗流浃背了
