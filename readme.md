@@ -85,7 +85,7 @@ CMD ["npm", "start"]
 # 运行Linux_exporter容器
 [root@localhost Front]# docker run -d --restart=always --name linux_exporter prom/node-exporter
 # 部署Prometheus容器
-[root@localhost Front]# docker run  -d --name prometheus --restart=always -p 9090:9090 --link Linux_exporter:Linux_exporter --link blog_backEnd:blog_backEnd -v /root/blogJob/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+[root@localhost Front]# docker run -d --name prometheus --restart=always -p 9090:9090 --link linux_exporter:linux_exporter --link blog_backEnd:blog_backEnd -v /root/blogJob/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
 # 部署grafana容器
 [root@localhost Front]# docker run -itd --restart=always -p 3000:3000 --name grafana --link prometheus:prometheus grafana/grafana
 
