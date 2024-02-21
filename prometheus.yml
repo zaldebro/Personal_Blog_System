@@ -1,0 +1,17 @@
+global:
+  scrape_interval:     60s
+  evaluation_interval: 60s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['linux_exporter:9100']
+        labels:
+          instance: localhost
+
+  - job_name: blogjob
+    metrics_path: /metrics/show
+    static_configs:
+      - targets: ['blog_backEnd:8080']
+        labels:
+          instance: blog_backEnd
